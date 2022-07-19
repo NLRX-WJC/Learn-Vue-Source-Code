@@ -107,7 +107,7 @@ methodsToPatch.forEach(function (method) {
 ```
 
 在上面的代码中，首先创建了继承自`Array`原型的空对象`arrayMethods`，接着在`arrayMethods`上使用`object.defineProperty`方法将那些可以改变数组自身的7个方法遍历逐个进行封装。最后，当我们使用`push`方法的时候，其实用的是`arrayMethods.push`，而`arrayMethods.push`就是封装的新函数`mutator`，也就后说，实标上执行的是函数`mutator`，而`mutator`函数内部执行了`original`函数，这个`original`函数就是`Array.prototype`上对应的原生方法。
-那么，接下来我们就可以在`mutato`r函数中做一些其他的事，比如说发送变化通知。
+那么，接下来我们就可以在`mutator`函数中做一些其他的事，比如说发送变化通知。
 
 ### 3.3 使用拦截器
 
